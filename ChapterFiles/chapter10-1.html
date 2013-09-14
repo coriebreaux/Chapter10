@@ -1,0 +1,175 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>Chapter 10 Tri-State Credit Union</title>
+<script type="text/javascript">
+<!--Hide from the old browers
+	var scrollMsg=" ** Qualified customers can earn cash back with a Tri-State Visa card ** "
+	var beginPos=0
+	function scrollingMsg() {
+		msgForm.scrollingMsg.value=scrollMsg.substring(beginPos,scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+		beginPos=beginPos+1
+		if (beginPos > scrollMsg.length) {
+			beginPos=0
+		}
+		window.setTimeout ("scrollingMsg()",200)
+	}
+
+var salesAmt
+var loanAmt
+var loanRate
+var loanYears
+
+funtion valSaleTradeAmt() {
+	var salesAmt=parseInt(LoanForm.saleAmount.value,10)
+	if (isNaN(salesAmt) || (salesAmt <= 0)) {
+		alert("The sales amount is not a valid number!")
+		LoanForm.SalesAmount.value = ""
+		LoanForm.SalesAmount.focus()
+	}
+	else {
+			var tradeinAmt =  parseInt(LoanForm.TradeIn.value,10)
+			if (isNaN(tradeinAmt) || (tradeinAmt <= 0) || (tradeinAmt > salesAmt)) {
+				alert("The trade-in amount is not a valid number!")
+				LoanForm.TradeIn.value = " "
+				LoanForm.TradeIn.focus()
+			}
+			else {
+				loanAmt = salesAmt-tradeinAmt
+				LoanForm.LoanAmount.value = loanAmt
+				LoanForm.Rate.focus()
+			}
+	}
+}
+
+	function calcLoanAmt() {
+	loanRate=parseFloat(LoanForm.Rate.value)
+	if (isNaN(loanRate) || (loanRate <= 0)) {
+		alert("The interest rate is not a valid number!")
+		LoanForm.Rate.value = ""
+		LoanForm.Rate.focus()
+	}
+	else {
+		loanYears=parseInt(LoanForm.Years.selectedIndex)
+		if (isNaN(loanYears) || (loanYears < 1)) {
+			alert("Please select a valid number of years from the list!")
+			LoanForm.Years.selectedIndex = "0"
+			LoanForm.Years.focus()
+		}
+	}
+}
+
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-image: url(tri-statebkgrnd.jpg);
+}
+.align-right {
+	text-align: right;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align:center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+.block {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+-->
+</style>
+</head>
+<body onload="scrollingMsg()">
+<p style="text-align:center" >
+  <img src="chapter10-1logo.jpg" alt="banner" />
+</p>
+<form id="msgForm" action="">
+	<p style="text-align:center"><input type="text" name="scrollingMsg"
+size="25" /></p>
+</form>
+<p style="text-align:center; font-size:16; font-weight:bold;">Auto Loan Payment Calculator</p>
+<p class="block"><strong>Directions: </strong>Enter a sales price, press the tab key, enter the trade in and press the tab key. The loan amount will be calcuated automatically. Then enter the interest rate and the number of years for the loan and click the Calculate button.</p>
+<form id="LoanForm" action="">
+<table cellspacing="5" id="autoloanform">
+        <tr>
+           <td class="align-right">
+              <span style="color:#cc0000;">*</span>Sales Price:
+           </td>
+           <td class="align-left"><input type="text" id="SaleAmount" size="7"  /></td>
+        </tr>
+        <tr>
+          <td class="align-right">
+             <span style="color:#cc0000;">*</span>Trade-in/Down Payment
+          </td>
+          <td class="align-left"><input name="Trade_in" type="text" id="TradeIn" size="7" /></td>
+        </tr>
+        <tr>
+          <td class="align-right">
+             <span style="color:#cc0000;">*</span>Loan Amount
+          </td>
+             <td class="align-left"><input name="LoanAmount" type="text" id="LoanAmount" size="7" />
+          </td>
+        </tr>
+        <tr>
+           <td class="align-right">
+              <span style="color:#cc0000;">*</span>Interest Rate (e.g. 5.9):
+		  </td>
+           <td class="align-left"><input name="Rate" type="text" id="Rate" size="5" maxlength="5" />
+		   </td>
+        </tr>
+        <tr>
+           <td class="align-right">
+              <span style="color:#cc0000;">*</span>Number of Years:
+	       </td>
+           <td>
+           <select name="Years" id="Years">
+             <option selected="selected">Years</option>
+             <option>1</option>
+             <option>2</option>
+             <option>3</option>
+             <option>4</option>
+             <option>5</option>
+             <option>6</option>
+           </select>
+           </td>
+      </tr>
+        <tr>
+           <td class="align-right">
+             <input name="button" type="button" value="Calculate" onclick="CalcLoanAmt()' />
+	       </td>
+           <td class="align-left">
+             <input name="Reset" type="reset" />
+		   </td>
+        </tr>
+        <tr>
+           <td class="align-right">
+              <span style="font-weight:bolder;">Monthly Payment:</span>
+           </td>
+           <td><input type="text" name="Payment" id="Payment" value=" " size="12" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="align-center">
+             <span style="color:#cc0000; font-size:12px;">* Indicates a required field.</span>
+          </td>
+        </tr>
+  </table>
+</form>
+
+</body>
+</html>

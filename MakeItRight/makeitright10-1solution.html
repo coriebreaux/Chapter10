@@ -1,0 +1,189 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+<title>Make10-1 Oakwood Mortgage</title>
+<script type="text/javascript">
+<!--Hide from old browsers
+    var thisMsg = "  ** See us for your auto loan financing needs!!! **  "
+    var beginPos = 0
+    function ScrollingMsg() {
+       msgForm.scrollMsg.value = thisMsg.substring(beginPos,thisMsg.length)+thisMsg.substring(0,beginPos)
+       beginPos+=1
+       if (beginPos > thisMsg.length) {
+          beginPos=0
+       }
+       window.setTimeout("scrollingMsg()",200)
+    }
+    
+    function Calc(LoanCalc) {
+       var salesAmount=parseInt(LoanCalc.SaleAmt.value,10)
+       if (isNaN(salesAmount) || (salesAmount <= 0)) {
+		  alert("Please enter a valid Sales Amount.")
+          LoanCalc.SaleAmt.value=" "
+          LoanCalc.SaleAmt.focus()
+       }
+       else {
+            var DownPayment=parseFloat(LoanCalc.DownPmt.value)/100
+            if (isNaN(DownPayment) || (DownPayment <= 0) || DownPayment > 100) {
+               alert("The Down Payment Rate is not a valid number!")
+               LoanCalc.DownPmt.value = ""
+               LoanCalc.DownPmt.focus()
+            }
+            else {
+                 var loanRate=parseFloat(LoanCalc.Rate.value)
+                 if (isNaN(loanRate) || (loanRate <= 0)) {
+                    alert("The interest rate is not a valid number!")
+                    LoanCalc.Rate.value = " "
+                    LoanCalc.Rate.focus()
+                 }
+                 else {
+                    var loanYears = LoanCalc.Years.value
+                    var loanYears = parseInt(loanYears,10)
+                    if (isNaN(loanYears) || (loanYears == 0)) {
+                       alert("Please select the number of years from the list and click Calculate!")
+                       LoanCalc.Years.focus()
+                    }
+                    else {
+						 loanAmount = salesAmount - AmtDown
+						 AmtDown = salesAmount * DownPayment
+						 LoanCalc.LoanAmt.value = dollarFormat(loanAmount.toFixed(2))
+                         var monthlyPmt = monthly(loanAmount,loanRate,loanYears)
+                         LoanCalc.Payment.value = dollarformat(monthlyPmt.toString())
+                   }
+              }
+           }
+       }     
+	}
+
+     function monthly(loanAmount,loanRate,loanYears) {
+        var interestRate = loanRate/1200
+        var Pmts = loanYears * 12
+        var Amnt = loanAmount * (interestRate / (1 - (1 / Math.pow(1+interestRate,Pmts))))
+	    return Amnt.toFixed(2)
+     }
+
+     function dollarFormat(valuein) {
+        var formatValue = ""
+        var formatDollars = ""
+        formatAmt = valuein.split(".",2)     
+		var dollars = formatAmt[0]
+        var dollarLen = dollars.length
+        if (dollarLen > 3) {
+           while (dollarLen > 0) {
+                 tempDollars = dollars.substring(dollarLen - 3,dollarLen)
+                 if (tempDollars.length == 3) {
+                    formatDollars = ","+tempDollars+formatDollars
+                    dollarLen = dollarLen - 3
+                 } else {
+                        formatDollars=tempDollars+formatDollars
+                        dollarLen = 0
+                 }
+           }
+         if (formatDollars.substring(0,1) == ",")
+            dollars = formatDollars.substring(1,formatDollars.length)
+         else
+            dollars = formatDollars
+         }
+ 		 var cents = formatAmt[1]
+         var formatValue="$"+dollars+"."+cents
+         return formatValue
+     }
+
+     function popUpAd() {
+        open("make10-1notice.html","noticeWin","width=520,height=270")
+     }
+	 
+     function lastModified() {
+		 dateDisplay.innerHTML="<span style='font-family:Arial, Helvetica, sans-serif; font-size:9px; font-weight:bold'>This document was last modified "+document.lastModified.substring(0,10)+"</span>"
+	 }
+     
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-image: url(financial_symbol.jpg);
+}
+-->
+</style>
+</head>
+<body onload="scrollingMsg(); popUpAd();">
+<div align="center">
+  <p align="center"><img src="make10-1banner.jpg" width="750" height="120" alt="banner" /></p>
+  <form id="msgForm" action="">
+    <p align="center"><input type="text" name="scrollMsg" id="scrollMsg" size="25" /></p>
+  </form>
+</div>
+<div style="font-family:Arial, Helvetica, sans-serif">
+<h3 align="center">Home Loan Payment Calculator</h3>
+<form id="LoanCalc" action="">
+    <table width="346" align="center" cellspacing="3">
+        <tr>
+           <td align="right">
+              <span style="color:#cc0000">*</span>Sale Price:
+           </td>
+           <td><input type="text" name="SaleAmt" id="SaleAmt" size="9" /></td>
+        </tr>
+        <tr>
+          <td align="right">
+             <span style="color:#cc0000">*</span> Down Payment as a percent
+          </td>
+          <td><input name="DownPmt" type="text" id="DownPmt" size="4" /> 
+          %</td>
+        </tr>
+        <tr>
+           <td align="right">
+              <span style="color:#cc0000">*</span> Interest Rate (e.g. 5.9):
+		  </td>
+           <td><input type="text" name="Rate" id="Rate" size="4" /> %  
+		   </td>
+        </tr>
+<tr>
+           <td align="right">
+              <span style="color:#cc0000">*</span> Select Number of Years:  
+      </td>
+           <td><select name="Years" id="Years">
+             <option selected="selected">Select Years</option>
+             <option value="10">10</option>
+             <option value="15">15</option>
+             <option value="20">20</option>
+             <option value="25">25</option>
+             <option value="30">30</option>
+             <option value="40">40</option>
+           </select></td>
+        </tr>
+        <tr>
+           <td align="right">
+             <input name="button" type="button" value="Calculate" onclick="Calc(LoanCalc)" />
+	       </td>
+           <td>
+             <input name="Reset" type="reset" />
+		   </td>
+        </tr>
+        <tr>
+          <td align="right">
+             <span style="color:#cc0000">*</span> Loan Amount          
+          </td>
+          <td>
+            <input name="LoanAmt" type="text" id="LoanAmt" size="9" />
+          </td>
+        </tr>
+        <tr>
+           <td align="right">
+              <span style="font-weight:bolder">Monthly Payment</span>: 
+           </td>
+           <td><input type="text" name="Payment" id="Payment" value=" " size="12" /></td>
+        </tr>
+  </table>
+  <p style="color:#cc0000; text-align:center">* Indicates a required field.</p>
+</form>
+</div>
+<div style="margin-left:5%">
+
+</div>
+</body>
+</html>

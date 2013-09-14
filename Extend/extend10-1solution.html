@@ -1,0 +1,121 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>Extend10-1 Solution</title>
+<script type="text/javascript">
+<!--Hide from old browsers
+var scrollMsg="  ** Exchange rates vary daily and may not be the same in the country you visit. **  "
+var beginPos=0
+function textMsg() {
+   msgForm.scrollingMsg.value = scrollMsg.substring(beginPos,scrollMsg.length)+scrollMsg.substring(0,beginPos)
+   beginPos+=1
+   if (beginPos > scrollMsg.length) {
+      beginPos=0
+   }
+   window.setTimeout("textMsg()",200)
+}
+
+var rateSelect
+var exAmount
+
+
+function exchangeit() {
+	var rateSelect=ExChangeRate.exchrate.selectedIndex
+	var exRateAmount=parseFloat (ExChangeRate.exchRate.options[rateSelect].value)
+	if (isNaN(exRateAmount)) {
+		alert ("The exchange rate amount is not a number!")
+			ExChangeRate.exchRate.style.backgroundColor="#ff0000"
+		ExChangeRate.exchRate.selectedIndex="0"
+		ExChangeRate.exchRate.focus()
+	}
+	else {
+		var exAmount=document.ExChangeRate.eAmount.value
+		var exAmount=parseFloat(exAmount)
+		if (isNaN(exAmount)) {
+			alert ("The amount is not a number!")
+
+document.ExChangeRate.eAmount.style.backgroundColor="#ff0000"
+			document.ExChangeRate.eAmount.value=""
+			document.ExChangeRate.eAmount.focus()
+		}
+		else {
+			var USDAmt=exRateAmount*exAmount
+			document.ExChageRate.ExchangeValue.value=USDAmt
+document.ExChangeRate.foreignCurrency.value=document.getElementById("exchRate").options[rateSelect].text
+			}
+		}
+}
+
+function dateLastModified() {
+	var lastModDate = document.lastModified
+	var lastModDate = lastModDate.substring(0,10)
+	copyright.innerHTML = "<p style='margin-left:5%'><span style='font-size: 8pt;'>Hollywood Travel Copyright 2012</span><span style='font-size: 8pt;'><br />This document was last modified "+lastModDate+".</span></p>"
+}
+//-->
+</script>
+<style type="text/css">
+body {
+	background-image: url(travelbkgrnd.gif);
+}
+
+.r_align {
+	text-align: right;
+}
+</style>
+</head>
+<body onload="textMsg(); dateLastModified()">
+<div style="text-align:center;">
+  <p><img src="extend10-1banner.jpg" width="750" height="150" alt="banner" /></p>
+<br />
+</div>
+<div style="text-align:center;">
+<img src="bluedivider.jpg" alt="divider" />
+<p style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">Exchange Rate</p>
+<form id="msgForm" action="">
+	<input type="text" name="scrollingMsg" size="25" />
+</form>
+<img src="bluedivider.jpg" alt="divider" />
+</div>
+<form name="ExChangeRate" id="ExChangeRate" action="">
+<table width="59%" border="0" align="center" cellspacing="3">
+<tr>
+   <td width="49%" class="r_align">Exchange Rate</td>
+   <td width="51%"><select name="exchRate" id="exchRate">
+     <option selected="selected">Select a Foreign Currency</option>
+     <option value="1.02">Canadian Dollars</option>
+     <option value=".741">Euros</option>
+     <option value=".666">British Pounds</option>
+     <option value="1.062">Swiss Francs</option>
+     <option value="92.72">Japanese Yen</option>
+   </select></td>
+</tr>
+<tr>
+   <td class="r_align">Amount in USD $</td>
+   <td>
+     <input type="text" name="eAmount" id="eAmount" size="10" />
+   </td>
+</tr>
+<tr>
+  <td class="r_align">
+     <input name="Calculate" type="button" onclick="exchangeit()" value="Calculate" />
+  </td>
+  <td>
+    <input type="reset" value="Reset" name="Reset" />
+   </td>
+</tr>
+<tr>
+   <td class="r_align">Exchange Rate of </td>
+   <td><input type="text" name="ExchangeValue" size="5" />
+   <input name="foreignCurrency" type="text" id="foreignCurrency" size="25" />
+   </td>
+</tr>
+</table>
+</form>
+<div id="copyright">
+</div>
+</body>
+</html>

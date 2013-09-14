@@ -1,0 +1,109 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+<title>Wabash River College Cruise</title>
+
+<style type="text/css">
+<!--
+body {
+	background-image: url(wrcbkgrnd.jpg);
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align:center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.block {
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+-->
+</style>
+</head>
+<body>
+  <p align="center"><img src="lab10-3banner.jpg" width="750" height="120" alt="banner" /></p>
+
+<h3 align="center">Cruise Payment Plan</h3>
+<p class="block"><strong>Directions: </strong>Enter a the cruise price, press the tab key, enter the deposit, and press the tab key. Then enter the interest rate, select the number of years for the loan and then click the Calculate button.</p>
+<form id="Cruise" action="">
+    <table width="346" cellspacing="3">
+        <tr>
+           <td width="217">
+              <div align="right"><span style="color:#cc0000">*</span><strong>Cruise Price</strong>:</div>
+           </td>
+           <td width="114"><input name="CruisePrice" type="text" id="CruisePrice" size="9" /></td>
+        </tr>
+        <tr>
+          <td>
+             <div align="right"><span style="color:#cc0000">*</span> <strong>Deposit Payment</strong></div>
+          </td>
+          <td><input name="Deposit" type="text" id="Deposit" size="9" /></td>
+        </tr>
+        <tr>
+          <td>
+             <div align="right"><span style="color:#cc0000">*</span> <strong>Amount Financed</strong></div>          
+          </td>
+          <td>
+             <input name="FinanceAmount" type="text" id="FinanceAmount" size="9" />
+          </td>
+        </tr>
+        <tr>
+           <td>
+              <div align="right"><span style="color:#cc0000">*</span> <strong>Interest Rate (e.g. 5.9)</strong>:</div>
+		  </td>
+           <td><input type="text" name="IntRate" id="IntRate" size="9" /> %  
+		   </td>
+        </tr>
+        <tr>
+           <td>
+              <div align="right"><span style="color:#cc0000">*</span> <strong>Number of Years</strong>: </div>
+	       </td>
+           <td><select name="Years">
+             <option value="0" selected="selected">Years</option>
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+             <option value="5">5</option>
+           </select></td>
+        </tr>
+        <tr>
+           <td>
+             <div align="right"><input name="button" type="button" value="Calculate" /></div>
+	       </td>
+           <td>
+             <input name="Reset" type="reset" />
+		   </td>
+        </tr>
+        <tr>
+           <td>
+              <div align="right"><span style="font-weight:bolder">Monthly Payment</span>:</div> 
+           </td>
+           <td><input type="text" name="Payment" id="Payment" value=" " size="12" /></td>
+        </tr>
+  </table>
+  <p align="center"><span style="color:#cc0000; font-size:12px">* Indicates a required field.</span> </p>
+</form>
+  <div style="margin-left:12%">
+
+  </div>
+</body>
+</html>

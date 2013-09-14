@@ -1,0 +1,68 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+<title>Extend10-1 Solution</title>
+
+<style type="text/css">
+body {
+	background-image: url(travelbkgrnd.gif);
+}
+
+.r_align {
+	text-align: right;
+}
+</style>
+</head>
+<body>
+<div style="text-align:center;">
+  <p><img src="extend10-1banner.jpg" width="750" height="150" alt="banner" /></p>
+<br />   
+</div>
+<div style="text-align:center;">
+<img src="bluedivider.jpg" alt="divider" />
+<p style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">Exchange Rate</p>
+
+<img src="bluedivider.jpg" alt="divider" />
+</div>
+<form name="ExChangeRate" id="ExChangeRate" action="">
+<table width="59%" border="0" align="center" cellspacing="3">
+<tr>
+   <td width="49%" class="r_align">Exchange Rate</td>
+   <td width="51%"><select name="exchRate" id="exchRate">
+     <option selected="selected">Select a Foreign Currency</option>
+     <option value="1.02">Canadian Dollars</option>
+     <option value=".741">Euros</option>
+     <option value=".666">British Pounds</option>
+     <option value="1.062">Swiss Francs</option>
+     <option value="92.72">Japanese Yen</option>
+   </select></td>
+</tr>
+<tr>
+   <td class="r_align">Amount in USD $</td>
+   <td>
+     <input type="text" name="eAmount" id="eAmount" size="10" />
+   </td>
+</tr>
+<tr>
+  <td class="r_align">
+     <input name="Calculate" type="button" value="Calculate" />
+  </td>
+  <td>
+    <input type="reset" value="Reset" name="Reset" />
+   </td>
+</tr>
+<tr>
+   <td class="r_align">Exchange Rate of </td>
+   <td><input type="text" name="ExchangeValue" size="5" /> 
+   <input name="foreignCurrency" type="text" id="foreignCurrency" size="25" />
+   </td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>
