@@ -1,0 +1,210 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>Lab10-1</title>
+
+<style type="text/css">
+<!--
+.style1 {
+	color: #990000;
+	font-weight: bold;
+}
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #0000FE;
+}
+-->
+</style>
+
+<script type="text/javascript">
+
+ function Calc(LoanCalc) {
+	       var salesAmount=parseInt(LoanCalc.SaleAmt.value,10)
+	       if (isNaN(salesAmount) || (salesAmount <= 0)) {
+			  alert("Please select the number of years until retirement from the list.")
+	          LoanCalc.SaleAmt.value=" "
+	          LoanCalc.SaleAmt.focus()
+       }
+       else {
+            var DownPayment=parseFloat(LoanCalc.DownPmt.value)/100
+            if (isNaN(DownPayment) || (DownPayment <= 0) || DownPayment > 100) {
+               alert("The Annual Average Interest Rate is not a valid number!")
+               LoanCalc.DownPmt.value = ""
+               LoanCalc.DownPmt.focus()
+            }
+            else {
+                 var loanRate=parseFloat(LoanCalc.Rate.value)
+                 if (isNaN(loanRate) || (loanRate <= 0)) {
+                    alert("The Retirement Goal is not a valid number!")
+                    LoanCalc.Rate.value = " "
+                    LoanCalc.Rate.focus()
+                 }
+                 else {
+                    var loanYears = LoanCalc.Years.value
+                    var loanYears = parseInt(loanYears,10)
+                    if (isNaN(loanYears) || (loanYears == 0)) {
+                       alert("Please select the number of years from the list and click Calculate!")
+                       LoanCalc.Years.focus()
+                    }
+                    else {
+						AmtDown = salesAmount * DownPayment
+						loanAmount = salesAmount - AmtDown
+						LoanCalc.LoanAmt.value = dollarFormat(loanAmount.toFixed(2))
+					    var monthlyPmt = monthly(loanAmount,loanRate,loanYears)
+                        LoanCalc.Payment.value = dollarFormat(monthlyPmt.toString())
+
+
+                   }
+              }
+           }
+       }
+	}
+
+     function monthly(loanAmount,loanRate,loanYears) {
+        var interestRate = loanRate/1200
+        var Pmts = loanYears * 12
+        var Amnt = loanAmount * (interestRate / (1 - (1 / Math.pow(1+interestRate,Pmts))))
+	    return Amnt.toFixed(2)
+     }
+
+     function dollarFormat(valuein) {
+        var formatValue = ""
+        var formatDollars = ""
+        formatAmt = valuein.split(".",2)
+		var dollars = formatAmt[0]
+        var dollarLen = dollars.length
+        if (dollarLen > 3)
+        {
+           while (dollarLen > 0)
+           {
+                 tempDollars = dollars.substring(dollarLen - 3,dollarLen)
+                 if (tempDollars.length == 3)
+                 {
+                    formatDollars = ","+tempDollars+formatDollars
+                    dollarLen = dollarLen - 3
+                 } else
+                 {
+                        formatDollars=tempDollars+formatDollars
+                        dollarLen = 0
+                 }
+           }
+         if (formatDollars.substring(0,1) == ",")
+            dollars = formatDollars.substring(1,formatDollars.length)
+         else
+            dollars = formatDollars
+         }
+ 		 var cents = formatAmt[1]
+         var formatValue="$"+dollars+"."+cents
+         return formatValue
+     }
+
+function popUpAd() {
+	open("chapter10-1notice.html","noticeWin","width=520, height=330")
+}
+
+
+
+function lastModified() {
+		 dateDisplay.innerHTML="<span style='font-family:Arial, Helvetica, sans-serif; font-size:9px; font-weight:bold'>This document was last modified "+document.lastModified.substring(0,10)+"</span>"
+	}
+
+</head>
+<body onload="scrollingMsg(); popUpAd(); lastModified()">
+<p align="center"><img src="lab10-1banner.jpg" alt="tri star logo" width="750" height="120" /></p>
+<p align="center"><span style="color: #6A4A3F; font-weight: bold; font-size: 14pt; font-family: Arial, Helvetica, sans-serif;">Galaxy Online Investments Made Easy</span></p>
+<div align="center">
+  <span class="style2">Investment Strategy Planner</span>
+  <form name="Invest" id="Invest" action="">
+    <table border="0" width="52%">
+        <tr>
+          <td width="51%" align="right">
+              <span class="style1">*</span> Years until retirement:
+          </td>
+          <td width="49%" align="left">
+              <select name="Years">
+                <option value="0" selected="selected">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+              </select>
+        </td>
+      </tr>
+      <tr>
+        <td width="51%" align="right">
+           <span class="style1">*</span>Estimated annual average interest:
+        </td>
+        <td width="49%" align="left">
+            <input type="text" name="IRate" value=" " size="3" /> %
+         </td>
+       </tr>
+      <tr>
+        <td width="51%" align="right">
+          <span class="style1">*</span> Retirement goal:
+        </td>
+        <td width="49%" align="left">
+          <input type="text" name="Goal" value=" " size="9" />
+        </td>
+      </tr>
+        <tr>
+          <td align="right">
+		    <input type="button" value="Calculate" />
+          </td>
+          <td align="left">
+            <input type="reset" />
+          </td>
+        </tr>
+        <tr>
+          <td width="51%" align="right">
+              To reach your goal you need to save
+          </td>
+          <td width="49%" align="left">
+		      <input type="text" name="Monthly" value=" " size="11" /> each month
+           </td>
+         </tr>
+         <tr>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+         </tr>
+    </table>
+</form>
+<!--Hide from old browers
+	var scrollMsg=" ** See a Galaxy Investment financial planner today-  ** "
+	var beginPos=0
+function scrollingMsg() {
+		msgBox.scrollingMsg.value=scrollMsg.substring(beginPos, scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+		beginPos=beginPos+1
+		if (beginPos > scrollMsg.length) {
+			beginPos=0
+		}
+		window.setTimeout("scrollingMsg()",200)
+	}
+
+<div id="displayDateLast" style="margin-left:5%">
+</div>
+</body>
+</html>
+
+<form id="msgBox" action="">
+	<p style=text-align:center"><input type="text" name="Message" size=35" /></p>
+</form>

@@ -1,12 +1,36 @@
 <!DOCTYPE html
    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>Wabash River College Cruise</title>
+<script type="text/javascript">
+<!--Hide from old browers
+	var scrollMsg="** A minimum deposit of $500 is required to hold a cruise reservation.**"
+	var beginPos=0
+	function scrollingMsg() {
+		msgForm.scrollingMsg.value=scrollMsg.substring(beginPos, scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+		beginPos=beginPos+1
+		if (beginPos > scrollMsg.length) {
+			beginPos=0
+		}
+		window.setTimeout("scrollingMsg()",200)
+	}
 
+function popUpAd() {
+	open("lab10-3announce.html","noticeWin","width=520, height=360")
+	}
+
+function copyRight() {
+	var lastModDate = document.lastModified
+	var lastModDate = lastModDate.substring(0,10)
+	displayDateLast.innerHTML = "<h6>Copyright Tri-State Credit Union"+"<br />This document was last modified "+lastModDate+".</h6>"
+	}
+
+//-->
+</script>
 <style type="text/css">
 <!--
 body {
@@ -38,7 +62,7 @@ table {
 -->
 </style>
 </head>
-<body>
+<body onload="scrollingMsg(); >
   <p align="center"><img src="lab10-3banner.jpg" width="750" height="120" alt="banner" /></p>
 
 <h3 align="center">Cruise Payment Plan</h3>
@@ -59,7 +83,7 @@ table {
         </tr>
         <tr>
           <td>
-             <div align="right"><span style="color:#cc0000">*</span> <strong>Amount Financed</strong></div>          
+             <div align="right"><span style="color:#cc0000">*</span> <strong>Amount Financed</strong></div>
           </td>
           <td>
              <input name="FinanceAmount" type="text" id="FinanceAmount" size="9" />
@@ -69,7 +93,7 @@ table {
            <td>
               <div align="right"><span style="color:#cc0000">*</span> <strong>Interest Rate (e.g. 5.9)</strong>:</div>
 		  </td>
-           <td><input type="text" name="IntRate" id="IntRate" size="9" /> %  
+           <td><input type="text" name="IntRate" id="IntRate" size="9" /> %
 		   </td>
         </tr>
         <tr>
@@ -95,7 +119,7 @@ table {
         </tr>
         <tr>
            <td>
-              <div align="right"><span style="font-weight:bolder">Monthly Payment</span>:</div> 
+              <div align="right"><span style="font-weight:bolder">Monthly Payment</span>:</div>
            </td>
            <td><input type="text" name="Payment" id="Payment" value=" " size="12" /></td>
         </tr>
@@ -103,7 +127,7 @@ table {
   <p align="center"><span style="color:#cc0000; font-size:12px">* Indicates a required field.</span> </p>
 </form>
   <div style="margin-left:12%">
-
+<div id="displayDateLast" style="margin-left:5%">
   </div>
 </body>
 </html>

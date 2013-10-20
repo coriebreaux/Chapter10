@@ -8,11 +8,11 @@
 <title>Make10-1 Oakwood Mortgage</title>
 <script type="text/javascript">
 <!--Hide from old browsers
- 	var thisMsg = "  ** See us for your auto loan financing needs!!! **  "
+ var thisMsg = "  ** See us for your auto loan financing needs!!! **  "
     var beginPos =0
-    function scrollingMsg() {
-       msgForm.scrollingMsg.value = thisMsg.substring(beginPos,thisMsg.length)+
-       thisMsg.substring(0,beginPos)
+    function scrollingMsg()
+	{
+       msgForm.scrollingMsg.value = thisMsg.substring(beginPos,thisMsg.length)+ thisMsg.substring(0,beginPos)
        beginPos=beginPos+1
        if (beginPos > thisMsg.length)
 	   {
@@ -21,12 +21,12 @@
        window.setTimeout("scrollingMsg()",200)
     }
 
-     function Calc(LoanCalc) {
-	       var salesAmount=parseInt(LoanCalc.SaleAmt.value,10)
-	       if (isNaN(salesAmount) || (salesAmount <= 0)) {
-			  alert("Please enter a valid Sales Amount.")
-	          LoanCalc.SaleAmt.value=" "
-	          LoanCalc.SaleAmt.focus()
+    function Calc(LoanCalc) {
+       var salesAmount=parseInt(LoanCalc.SaleAmt.value,10)
+       if (isNaN(salesAmount) || (salesAmount <= 0)) {
+		  alert("Please enter a valid Sales Amount.")
+          LoanCalc.SaleAmt.value=" "
+          LoanCalc.SaleAmt.focus()
        }
        else {
             var DownPayment=parseFloat(LoanCalc.DownPmt.value)/100
@@ -51,11 +51,19 @@
                     }
                     else {
 						AmtDown = salesAmount * DownPayment
-						loanAmount = salesAmount - AmtDown
+						var loanAmount = salesAmount - AmtDown
 						LoanCalc.LoanAmt.value = dollarFormat(loanAmount.toFixed(2))
-					    var monthlyPmt = monthly(loanAmount,loanRate,loanYears)
-                        LoanCalc.Payment.value = dollarFormat(monthlyPmt.toString())
+						var monthlyPmt = monthly(loanAmount, loanRate, loanYears)
+						LoanCalc.Payment.value = dollarformat(monthlyPmt.toString())
 
+	// works with negative numbers also
+		//function formatNumber(x) {
+		//return x.toFixed(2).split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1,').split('').reverse().join('').replace(/^[\,]/,'');
+		//}
+
+		//var num = formatNumber(1234567.8897);
+		//num = "$" + num;
+	//alert (num);
 
                    }
               }
@@ -76,17 +84,13 @@
         formatAmt = valuein.split(".",2)
 		var dollars = formatAmt[0]
         var dollarLen = dollars.length
-        if (dollarLen > 3)
-        {
-           while (dollarLen > 0)
-           {
+        if (dollarLen > 3) {
+           while (dollarLen > 0) {
                  tempDollars = dollars.substring(dollarLen - 3,dollarLen)
-                 if (tempDollars.length == 3)
-                 {
+                 if (tempDollars.length == 3) {
                     formatDollars = ","+tempDollars+formatDollars
                     dollarLen = dollarLen - 3
-                 } else
-                 {
+                 } else {
                         formatDollars=tempDollars+formatDollars
                         dollarLen = 0
                  }

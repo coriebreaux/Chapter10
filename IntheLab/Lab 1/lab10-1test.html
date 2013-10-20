@@ -6,6 +6,22 @@
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>Lab10-1</title>
+<script type="text/javascript">
+
+
+
+
+
+
+function popUpAd() {
+	open("chapter10-1notice.html","noticeWin","width=520, height=330")
+}
+
+function lastModified() {
+		 dateDisplay.innerHTML="<span style='font-family:Arial, Helvetica, sans-serif; font-size:9px; font-weight:bold'>This document was last modified "+document.lastModified.substring(0,10)+"</span>"
+	}
+
+
 
 <style type="text/css">
 <!--
@@ -21,7 +37,7 @@
 -->
 </style>
 </head>
-<body>
+<body onload="scrollingMsg(); popUpAd(); lastModified()">
 <p align="center"><img src="lab10-1banner.jpg" alt="tri star logo" width="750" height="120" /></p>
 <p align="center"><span style="color: #6A4A3F; font-weight: bold; font-size: 14pt; font-family: Arial, Helvetica, sans-serif;">Galaxy Online Investments Made Easy</span></p>
 <div align="center">
@@ -95,8 +111,19 @@
          </tr>
     </table>
 </form>
+<!--Hide from old browers
+	var scrollMsg=" ** See a Galaxy Investment financial planner today-  ** "
+	var beginPos=0
+function scrollingMsg() {
+		msgForm.scrollingMsg.value=scrollMsg.substring(beginPos, scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+		beginPos=beginPos+1
+		if (beginPos > scrollMsg.length) {
+			beginPos=0
+		}
+		window.setTimeout("scrollingMsg()",200)
+	}
 
-
+<div id="displayDateLast" style="margin-left:5%">
 </div>
 </body>
 </html>

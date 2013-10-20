@@ -1,11 +1,98 @@
 <!DOCTYPE html
    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-   
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>Lab10-2 Solution</title>
+<script type="text/javascript">
+<!--Hide from old browsers
+		var scrollMsg=" ** -See a Galaxy Investment financial planner today- ** "
+		var beginPos=0
+		function Message() {
+			msgBox.Message.value=scrollMsg.substring(beginPos, scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+			beginPos=beginPos+1
+			if (beginPos > scrollMsg.length) {
+				beginPos=0
+			}
+			window.setTimeout("Message()",200)
+	}
+
+
+function avergCalc() {
+		gameOne = parseInt(averageCalc.game1.value, 10);
+	  	if (isNaN(gameOne) || (gameOne <= 0) || (gameOne > 300)) {
+			 alert("Entries must be less than 0 or greater than 300!");
+			 averageCalc.game1.value = "";
+			 averageCalc.game1.focus();
+	 	}
+	 	else {
+	  		gameTwo = parseInt(averageCalc.game2.value, 10);
+	  		if (isNaN(gameTwo) || (gameTwo <= 0) || (gameTwo > 300)) {
+				 alert("Entries must be less than 0 or greater than 300!");
+				 averageCalc.game2.value = "";
+				 averageCalc.game2.focus();
+	 	}
+	 	else {
+	 		var gameThree = parseInt(averageCalc.game3.value, 10);
+			 if (isNaN(gameThree) || (gameThree <= 0) || (gameThree > 300)) {
+				 alert("Entries must be less than 0 or greater than 300!");
+				 averageCalc.game3.value = "";
+				 averageCalc.game3.focus();
+	 	}
+	 	else {
+	 		var avgGame = averAge(gameOne, gameTwo, gameThree);
+	 			averageCalc.Avg.value = (avgGame.toString());
+	 	}
+	  }
+	}
+  }
+
+	function averAge(gameOne, gameTwo, gameThree) {
+	 var bowlAvg = (gameOne + gameTwo + gameThree) / 3;
+	 return bowlAvg
+ }
+
+ function dollarFormat(valuein) {
+ 	var formatValue = ""
+ 	var formatDollars = ""
+ 	formatAmt = valuein.split(".",2)
+ 	var dollars = formatAmt[0]
+ 	var dollarLen = dollars.length
+ 	if (dollarLen > 3) {
+ 		while (dollarLen > 0) {
+ 			tempDollars = dollars.substring(dollarLen - 3,dollarLen)
+ 				if (tempDollars.length == 3) {
+ 					formatDollars = "," + tempDollars + formatDollars
+ 					dollarLen = dollarLen - 3
+ 				} 	else {
+ 						formatDollars = tempDollars + formatDollars
+ 						dollarLen = 0
+ 					}
+ 		}
+ 	if (formatDollars.substring(0,1) == ",")
+ 		dollars = formatDollars.substring(1,formatDollars.length)
+ 	else
+ 		dollars = formatDollars
+ 	}
+ 	var cents = formatAmt[1]
+ 	var formatValue="$"+dollars+"."+cents
+ 	return formatValue
+ }
+
+ function popUpAd() {
+ 	open("lab10-2announce.html","announce","width=520, height=370")
+ }
+
+ function copyRight() {
+ 	var lastModDate = document.lastModified
+ 	var lastModDate = lastModDate.substring(0,10)
+ 	displayDateLast.innerHTML = "<h6>Copyright Tri-State Credit Union"+"<br />This document was last modified "+lastModDate+".</h6>"
+ 	}
+
+ //-->
+</script>
 
 <style type="text/css">
 <!--
@@ -15,13 +102,17 @@
 -->
 </style>
 </head>
-<body>
+<body onload="Message(); popUpAd(); copyRight()">
 <div class="centerit">
   <p><img src="lab10-2banner.jpg" alt="banner" name="edgewoodbanner" width="750" height="120" id="edgewoodbanner" />
   </p>
   <p><img src="bluehrzntldivider.jpg" width="750" height="3" alt="divider" /></p>
 </div>
 <div class="centerit">
+
+<form id="msgForm" action="">
+	<p style="text-align:center"><input type="text" name="messageBox" size="25" /></p>
+</form>
 
 <form name="averageCalc" id="averageCalc" action="">
   <table width="748" border="0" align="center">
@@ -58,6 +149,8 @@
     </tr>
   </table>
 </form>
+
+<div id="displayDateLast" align="center" style="margin-left:5%">
 </div>
 </body>
 </html>

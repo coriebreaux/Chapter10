@@ -6,6 +6,32 @@
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>Lab10-1</title>
+<script type="text/javascript">
+<!--Hide from old browsers
+		var scrollMsg=" ** -See a Galaxy Investment financial planner today- ** "
+		var beginPos=0
+		function Message() {
+			msgBox.Message.value=scrollMsg.substring(beginPos, scrollMsg.length)+ scrollMsg.substring(0,beginPos)
+			beginPos=beginPos+1
+			if (beginPos > scrollMsg.length) {
+				beginPos=0
+			}
+			window.setTimeout("Message()",200)
+	}
+
+
+function adWindow() {
+	open("lab10-1thankyou.html","thank you","width=520,height=330")
+}
+
+function footerMsg() {
+	var lastModDate = document.lastModified
+	var lastModDate = lastModDate.substring(0,10)
+	displayDateLast.innerHTML ="<h6>This document was last modified "+lastModDate+".</h6>"
+	}
+
+//-->
+</script>
 
 <style type="text/css">
 <!--
@@ -21,7 +47,7 @@
 -->
 </style>
 </head>
-<body>
+<body onload="Message(); adWindow(); footerMsg()">
 <p align="center"><img src="lab10-1banner.jpg" alt="tri star logo" width="750" height="120" /></p>
 <p align="center"><span style="color: #6A4A3F; font-weight: bold; font-size: 14pt; font-family: Arial, Helvetica, sans-serif;">Galaxy Online Investments Made Easy</span></p>
 <div align="center">
@@ -75,7 +101,7 @@
       </tr>
         <tr>
           <td align="right">
-		    <input type="button" value="Calculate" />
+		    <input id="btnCalculate" type="button" value="Calculate" />
           </td>
           <td align="left">
             <input type="reset" />
@@ -86,7 +112,7 @@
               To reach your goal you need to save
           </td>
           <td width="49%" align="left">
-		      <input type="text" name="Monthly" value=" " size="11" /> each month
+	      <input type="text" name="Monthly" value=" " size="11" /> each month
            </td>
          </tr>
          <tr>
@@ -95,7 +121,10 @@
          </tr>
     </table>
 </form>
-
+<form id="msgBox" action="">
+	<p style="text-align:center"><input type="text" name="Message" size="35" /></p>
+</form>
+<div id="displayDateLast" align="center" style="margin-left:5%">
 
 </div>
 </body>

@@ -1,0 +1,78 @@
+function Years() {
+	var yearsSelect=RetireYears.selectedIndex
+	 	var Irate=parseFloat (RetireYears.exchRate.options[yearsSelect].value)
+	 	if (isNaN(IrateAmount)) || (IrateAmount<=0)) {
+	 		alert ("The interest rate amount is not a valid number!")
+	 		Years.style.backgroundColor="#ff0000"
+	 		Years.selectedIndex="0"
+	 		Years.focus()
+	}
+ 
+ 
+ 
+ 
+ 
+ function exchangeit() {
+ 	var rateSelect=ExChangeRate.exchRate.selectedIndex
+ 	var erateAmount=parseFloat (ExChangeRate.exchRate.options[rateSelect].value)
+ 	if (isNaN(erateAmount)) {
+ 		alert ("The exchange rate amount is not a number!")
+ 			ExChangeRate.exchRate.style.backgroundColor="#ff0000"
+ 		ExChangeRate.exchRate.selectedIndex="0"
+ 		ExChangeRate.exchRate.focus()
+	}
+
+	else {
+	                 var loanRate=parseFloat(LoanCalc.Rate.value)
+	                 if (isNaN(loanRate) || (loanRate <= 0)) {
+	                    alert("The interest rate is not a valid number!")
+	                    .style.backgroundColor="#ff0000"
+	                    LoanCalc.Rate.value = " "
+                    LoanCalc.Rate.focus()
+                    }
+    function Calc(LoanCalc) {
+		       var salesAmount=parseInt(LoanCalc.SaleAmt.value,10)
+		       if (isNaN(salesAmount) || (salesAmount <= 0)) {
+				  alert("Please enter a valid Sales Amount.")
+				  .style.backgroundColor="#ff0000"
+		          LoanCalc.SaleAmt.value=" "
+		          LoanCalc.SaleAmt.focus()
+       }
+
+    function monthly(Amount,Irate,Years) {
+	        var Irate = loanRate/1200
+	        var Pmts = loanYears * 12
+	        var Amnt = loanAmount * (Irate / (1 - (1 / Math.pow(1+Irate,Pmts))))
+		    return Amnt.toFixed(2)
+	     }
+
+	     function dollarFormat(valuein) {
+	        var formatValue = ""
+	        var formatDollars = ""
+	        formatAmt = valuein.split(".",2)
+			var dollars = formatAmt[0]
+	        var dollarLen = dollars.length
+	        if (dollarLen > 3)
+	        {
+	           while (dollarLen > 0)
+	           {
+	                 tempDollars = dollars.substring(dollarLen - 3,dollarLen)
+	                 if (tempDollars.length == 3)
+	                 {
+	                    formatDollars = ","+tempDollars+formatDollars
+	                    dollarLen = dollarLen - 3
+	                 } else
+	                 {
+	                        formatDollars=tempDollars+formatDollars
+	                        dollarLen = 0
+	                 }
+	           }
+	         if (formatDollars.substring(0,1) == ",")
+	            dollars = formatDollars.substring(1,formatDollars.length)
+	         else
+	            dollars = formatDollars
+	         }
+	 		 var cents = formatAmt[1]
+	         var formatValue="$"+dollars+"."+cents
+	         return formatValue
+	     }
